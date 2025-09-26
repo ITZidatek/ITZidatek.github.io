@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خدمات IT Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset بسيط */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Roboto', sans-serif; line-height:1.6; background:#f9f9f9; color:#333; }
+    a { text-decoration:none; color:inherit; }
+
+    /* Header */
+    header { background:#007bff; color:white; padding:25px 20px; text-align:center; }
+    header h1 { margin-bottom:10px; font-size:2em; }
+    nav a { color:white; margin:0 15px; font-weight:bold; transition:0.3s; }
+    nav a:hover { text-decoration:underline; }
+
+    /* Sections */
+    section { padding:50px 20px; max-width:1100px; margin:40px auto; background:white; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
+    h2 { color:#007bff; margin-bottom:25px; text-align:center; }
+
+    /* Services grid */
+    .services { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; }
+    .service { background:#e6f0ff; padding:25px; border-radius:10px; text-align:center; transition:0.3s; }
+    .service:hover { transform:translateY(-5px); box-shadow:0 5px 15px rgba(0,0,0,0.1); }
+    .service h3 { margin-bottom:15px; color:#0056b3; }
+
+    /* Contact form */
+    form { display:flex; flex-direction:column; gap:15px; }
+    form input, form textarea { padding:12px; border:1px solid #ccc; border-radius:5px; font-size:1em; }
+    form button { padding:12px; background:#007bff; color:white; font-weight:bold; border:none; border-radius:5px; cursor:pointer; transition:0.3s; }
+    form button:hover { background:#0056b3; }
+
+    /* Footer */
+    footer { text-align:center; padding:20px; background:#333; color:white; margin-top:20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>خدمات IT Support</h1>
+  <nav>
+    <a href="#services">الخدمات</a>
+    <a href="#about">من أنا</a>
+    <a href="#contact">اتصل بي</a>
+  </nav>
+</header>
+
+<section id="services">
+  <h2>الخدمات ديالي</h2>
+  <div class="services">
+    <div class="service">
+      <h3>دعم عن بعد</h3>
+      <p>حل مشاكل الكمبيوتر والبرامج عن بعد بسرعة وفعالية.</p>
+    </div>
+    <div class="service">
+      <h3>صيانة الأجهزة</h3>
+      <p>تثبيت البرامج، إصلاح الأعطال، تركيب الأجهزة الجديدة.</p>
+    </div>
+    <div class="service">
+      <h3>شبكات وVPN</h3>
+      <p>تركيب الشبكات الداخلية، Wi-Fi، VPN وتأمينها.</p>
+    </div>
+    <div class="service">
+      <h3>تكوين المستخدمين</h3>
+      <p>تدريب الموظفين على استخدام الكمبيوتر والبرامج بأمان.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h2>من أنا</h2>
+  <p>أنا متخصص في دعم IT، عندي خبرة سنوات في صيانة الأجهزة والبرمجيات، تركيب الشبكات، وحماية الأنظمة. هدفي هو مساعدة الشركات والأفراد على حل مشاكلهم التقنية بسرعة وفعالية.</p>
+</section>
+
+<section id="contact">
+  <h2>اتصل بي</h2>
+  <p>بريد إلكتروني: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+  <p>هاتف: +212 6 xx xx xx xx</p>
+  
+  <h3>أرسل رسالة مباشرة:</h3>
+  <form action="https://formspree.io/f/mayzvkjr" method="POST">
+    <input type="text" name="name" placeholder="الإسم" required>
+    <input type="email" name="_replyto" placeholder="البريد الإلكتروني" required>
+    <textarea name="message" placeholder="الرسالة" rows="5" required></textarea>
+    <button type="submit">إرسال</button>
+  </form>
+</section>
+
+<footer>
+  &copy; 2025 خدمات IT Support. كل الحقوق محفوظة.
+</footer>
+
+</body>
+</html>
