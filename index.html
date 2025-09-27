@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zidane Abdel - IT Support</title>
+<title>Abdelkebir Zidane - IT Support Consultant</title>
 <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  /* Reset & body */
   body {
     font-family: 'Segoe UI', sans-serif;
     margin: 0;
@@ -26,11 +25,10 @@
     box-shadow: 0 6px 20px rgba(0,0,0,0.25);
   }
   header h1 { margin: 0; font-size: 2.4rem; }
-  header p { font-size: 1.1rem; margin-top: 0.5rem; }
+  header p { font-size: 1.2rem; margin-top: 0.5rem; }
 
   section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
 
-  /* Accordion button */
   .accordion {
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(10px);
@@ -48,13 +46,10 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     position: relative;
   }
-
   .accordion:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
   .accordion.active { background: #0078d7; color: #fff; }
-
   .accordion i { margin-right: 0.8rem; }
 
-  /* Accordion panel */
   .panel {
     max-height: 0;
     overflow: hidden;
@@ -92,11 +87,12 @@
 <body>
 
 <header>
-  <h1>Zidane Abdel</h1>
-  <p>IT Support / Spécialiste Windows – 14+ ans d'expérience</p>
+  <h1>Abdelkebir Zidane</h1>
+  <p>IT Support Consultant – 14+ ans d'expérience</p>
 </header>
 
 <section>
+
   <button class="accordion"><i class="fas fa-user"></i>À propos de moi</button>
   <div class="panel">
     <div class="panel-content">
@@ -108,12 +104,38 @@
   <div class="panel">
     <div class="panel-content">
       <ul>
-        <li>Support technique sur Windows 10/11 et applications Microsoft</li>
-        <li>Mise à niveau et sécurisation des infrastructures réseau</li>
-        <li>Supervision et récupération des données</li>
-        <li>Gestion de la téléphonie et standard VoIP</li>
-        <li>Installation, configuration et maintenance des systèmes et périphériques</li>
-        <li>Formation et accompagnement utilisateurs</li>
+        <li><strong>Support technique Windows :</strong>
+          <ul>
+            <li>Diagnostic et résolution de problèmes matériels et logiciels</li>
+            <li>Support à distance et sur site</li>
+            <li>Accompagnement et formation utilisateurs</li>
+          </ul>
+        </li>
+        <li><strong>Mise à niveau et sécurisation des infrastructures réseau :</strong>
+          <ul>
+            <li>Configuration LAN, VPN et Wi-Fi</li>
+            <li>Installation de pare-feu et antivirus</li>
+            <li>Monitoring et supervision réseau</li>
+          </ul>
+        </li>
+        <li><strong>Supervision et récupération des données :</strong>
+          <ul>
+            <li>Sauvegarde régulière et restauration de données</li>
+            <li>Surveillance des systèmes pour prévenir les incidents</li>
+          </ul>
+        </li>
+        <li><strong>Gestion de la téléphonie :</strong>
+          <ul>
+            <li>Support du standard téléphonique</li>
+            <li>Configuration et maintenance VoIP</li>
+          </ul>
+        </li>
+        <li><strong>Installation et maintenance :</strong>
+          <ul>
+            <li>Configuration de postes et serveurs Windows</li>
+            <li>Installation et suivi des périphériques (imprimantes, scanners, routeurs)</li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
@@ -125,10 +147,11 @@
       <p>Téléphone : <a href="tel:+212615362721">0615362721</a></p>
     </div>
   </div>
+
 </section>
 
 <footer>
-  &copy; 2025 Zidane Abdel – IT Support
+  &copy; 2025 Abdelkebir Zidane – IT Support Consultant
 </footer>
 
 <script>
@@ -137,7 +160,7 @@
     acc.addEventListener('click', () => {
       acc.classList.toggle('active');
       const panel = acc.nextElementSibling;
-      if(panel.style.maxHeight) {
+      if(panel.style.maxHeight){
         panel.style.maxHeight = null;
       } else {
         panel.style.maxHeight = panel.scrollHeight + "px";
