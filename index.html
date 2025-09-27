@@ -29,7 +29,6 @@
 
   section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
 
-  /* Accordion button */
   .accordion {
     background: rgba(255,255,255,0.2);
     backdrop-filter: blur(12px);
@@ -50,10 +49,8 @@
   }
   .accordion:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.15); transform: translateY(-2px);}
   .accordion.active { background: #0078d7; color: #fff; }
-
   .accordion i { margin-right: 0.8rem; }
 
-  /* Accordion panel */
   .panel {
     max-height: 0;
     overflow: hidden;
@@ -69,13 +66,45 @@
 
   .panel-content { padding: 1rem 0; }
 
+  /* Paragraphs & list items hover effect */
+  .panel-content p, .panel-content ul li {
+    transition: transform 0.3s, color 0.3s;
+  }
+  .panel-content p:hover, .panel-content ul li:hover {
+    transform: translateX(5px);
+    color: #0078d7;
+  }
+
   ul { list-style: none; padding: 0; margin: 0; }
-  ul li { margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative; transition: transform 0.3s, color 0.3s;}
-  ul li::before { content: '✔'; position: absolute; left: 0; color: #0078d7; transition: transform 0.3s; }
+  ul li { margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative; }
+  ul li::before { content: '✔'; position: absolute; left: 0; color: #0078d7; }
 
-  ul li:hover { transform: translateX(5px); color: #0078d7; }
-
-  .contact a { color: #0078d7; text-decoration: none; font-weight: 600; }
+  /* Contact card */
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(12px);
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .contact-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  .contact-card i {
+    font-size: 1.5rem;
+    color: #0078d7;
+  }
+  .contact-card a {
+    text-decoration: none;
+    color: #1c1c1c;
+    font-weight: 600;
+  }
 
   footer {
     text-align: center;
@@ -104,7 +133,8 @@
   <button class="accordion"><i class="fas fa-user"></i>À propos de moi</button>
   <div class="panel">
     <div class="panel-content">
-      <p>Professionnel IT Support spécialisé dans les <strong>systèmes et réseaux</strong> (Windows, iOS, serveurs), sécurité et téléphonie. Je propose assistance, formation et accompagnement des utilisateurs pour garantir des systèmes performants, sécurisés et fiables.</p>
+      <p>Professionnel IT Support spécialisé dans les <strong>systèmes et réseaux</strong> (Windows, iOS, serveurs), sécurité et téléphonie.</p>
+      <p>Je propose assistance, formation et accompagnement des utilisateurs pour garantir des systèmes performants, sécurisés et fiables.</p>
     </div>
   </div>
 
@@ -153,8 +183,14 @@
   <button class="accordion"><i class="fas fa-envelope"></i>Contact</button>
   <div class="panel">
     <div class="panel-content">
-      <p>Email : <a href="mailto:zidatekitpro@gmail.com">zidatekitpro@gmail.com</a></p>
-      <p>Téléphone : <a href="tel:+212615362721">0615362721</a></p>
+      <div class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:zidatekitpro@gmail.com">zidatekitpro@gmail.com</a>
+      </div>
+      <div class="contact-card">
+        <i class="fas fa-phone"></i>
+        <a href="tel:+212615362721">0615362721</a>
+      </div>
     </div>
   </div>
 
