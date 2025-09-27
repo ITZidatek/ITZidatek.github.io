@@ -29,9 +29,10 @@
 
   section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
 
+  /* Accordion button */
   .accordion {
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(12px);
     color: #1c1c1c;
     cursor: pointer;
     padding: 1.5rem 2rem;
@@ -40,32 +41,39 @@
     outline: none;
     text-align: left;
     font-size: 1.2rem;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     border-radius: 1rem;
     margin-bottom: 1rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     position: relative;
+    transform-style: preserve-3d;
   }
-  .accordion:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+  .accordion:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.15); transform: translateY(-2px);}
   .accordion.active { background: #0078d7; color: #fff; }
+
   .accordion i { margin-right: 0.8rem; }
 
+  /* Accordion panel */
   .panel {
     max-height: 0;
     overflow: hidden;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(12px);
     border-radius: 0 0 1rem 1rem;
     margin-bottom: 1rem;
-    transition: max-height 0.5s ease;
+    transition: max-height 0.6s ease, opacity 0.5s ease;
     padding: 0 2rem;
+    opacity: 0;
   }
+  .panel.show { opacity: 1; }
 
   .panel-content { padding: 1rem 0; }
 
   ul { list-style: none; padding: 0; margin: 0; }
-  ul li { margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative; }
-  ul li::before { content: '✔'; position: absolute; left: 0; color: #0078d7; }
+  ul li { margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative; transition: transform 0.3s, color 0.3s;}
+  ul li::before { content: '✔'; position: absolute; left: 0; color: #0078d7; transition: transform 0.3s; }
+
+  ul li:hover { transform: translateX(5px); color: #0078d7; }
 
   .contact a { color: #0078d7; text-decoration: none; font-weight: 600; }
 
@@ -164,8 +172,10 @@
       const panel = acc.nextElementSibling;
       if(panel.style.maxHeight){
         panel.style.maxHeight = null;
+        panel.classList.remove('show');
       } else {
         panel.style.maxHeight = panel.scrollHeight + "px";
+        panel.classList.add('show');
       }
     });
   });
