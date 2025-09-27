@@ -1,99 +1,150 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services IT Support</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    /* Reset simple */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: 'Roboto', sans-serif; line-height:1.6; background:#f9f9f9; color:#333; }
-    a { text-decoration:none; color:inherit; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zidane Abdel - IT Support</title>
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  /* Reset & body */
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg,#e0e5ec,#ffffff);
+    color: #1c1c1c;
+  }
 
-    /* Header */
-    header { background:#007bff; color:white; padding:25px 20px; text-align:center; }
-    header h1 { margin-bottom:10px; font-size:2em; }
-    nav a { color:white; margin:0 15px; font-weight:bold; transition:0.3s; }
-    nav a:hover { text-decoration:underline; }
+  header {
+    background: #0078d7;
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  }
+  header h1 { margin: 0; font-size: 2.4rem; }
+  header p { font-size: 1.1rem; margin-top: 0.5rem; }
 
-    /* Sections */
-    section { padding:50px 20px; max-width:1100px; margin:40px auto; background:white; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
-    h2 { color:#007bff; margin-bottom:25px; text-align:center; }
+  section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
 
-    /* Services grid */
-    .services { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; }
-    .service { background:#e6f0ff; padding:25px; border-radius:10px; text-align:center; transition:0.3s; }
-    .service:hover { transform:translateY(-5px); box-shadow:0 5px 15px rgba(0,0,0,0.1); }
-    .service h3 { margin-bottom:15px; color:#0056b3; }
+  /* Accordion button */
+  .accordion {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    color: #1c1c1c;
+    cursor: pointer;
+    padding: 1.5rem 2rem;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    position: relative;
+  }
 
-    /* Contact form */
-    form { display:flex; flex-direction:column; gap:15px; }
-    form input, form textarea { padding:12px; border:1px solid #ccc; border-radius:5px; font-size:1em; }
-    form button { padding:12px; background:#007bff; color:white; font-weight:bold; border:none; border-radius:5px; cursor:pointer; transition:0.3s; }
-    form button:hover { background:#0056b3; }
+  .accordion:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+  .accordion.active { background: #0078d7; color: #fff; }
 
-    /* Footer */
-    footer { text-align:center; padding:20px; background:#333; color:white; margin-top:20px; }
-  </style>
+  .accordion i { margin-right: 0.8rem; }
+
+  /* Accordion panel */
+  .panel {
+    max-height: 0;
+    overflow: hidden;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 1rem 1rem;
+    margin-bottom: 1rem;
+    transition: max-height 0.5s ease;
+    padding: 0 2rem;
+  }
+
+  .panel-content { padding: 1rem 0; }
+
+  ul { list-style: none; padding: 0; margin: 0; }
+  ul li { margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative; }
+  ul li::before { content: '✔'; position: absolute; left: 0; color: #0078d7; }
+
+  .contact a { color: #0078d7; text-decoration: none; font-weight: 600; }
+
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width:600px){
+    header h1 { font-size: 1.8rem; }
+    .accordion { font-size: 1rem; padding: 1rem 1.5rem; }
+    .panel { padding: 0 1.5rem; }
+  }
+</style>
 </head>
 <body>
 
 <header>
-  <h1>Services IT Support</h1>
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#about">À propos</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <h1>Zidane Abdel</h1>
+  <p>IT Support / Spécialiste Windows – 14+ ans d'expérience</p>
 </header>
 
-<section id="services">
-  <h2>Mes Services</h2>
-  <div class="services">
-    <div class="service">
-      <h3>Support à distance</h3>
-      <p>Résolution de problèmes informatiques et logiciels rapidement et efficacement.</p>
+<section>
+  <button class="accordion"><i class="fas fa-user"></i>À propos de moi</button>
+  <div class="panel">
+    <div class="panel-content">
+      <p>Professionnel IT Support spécialisé dans les systèmes Windows, réseaux, sécurité et téléphonie. Je propose assistance, formation et accompagnement des utilisateurs pour garantir des systèmes performants et sécurisés.</p>
     </div>
-    <div class="service">
-      <h3>Maintenance matérielle</h3>
-      <p>Installation de logiciels, réparation de pannes, configuration de nouveaux équipements.</p>
+  </div>
+
+  <button class="accordion"><i class="fas fa-cogs"></i>Compétences</button>
+  <div class="panel">
+    <div class="panel-content">
+      <ul>
+        <li>Support technique sur Windows 10/11 et applications Microsoft</li>
+        <li>Mise à niveau et sécurisation des infrastructures réseau</li>
+        <li>Supervision et récupération des données</li>
+        <li>Gestion de la téléphonie et standard VoIP</li>
+        <li>Installation, configuration et maintenance des systèmes et périphériques</li>
+        <li>Formation et accompagnement utilisateurs</li>
+      </ul>
     </div>
-    <div class="service">
-      <h3>Réseaux et VPN</h3>
-      <p>Installation et sécurisation de réseaux internes, Wi-Fi et VPN.</p>
-    </div>
-    <div class="service">
-      <h3>Formation utilisateurs</h3>
-      <p>Accompagnement et formation des employés pour utiliser les outils informatiques en toute sécurité.</p>
+  </div>
+
+  <button class="accordion"><i class="fas fa-envelope"></i>Contact</button>
+  <div class="panel">
+    <div class="panel-content">
+      <p>Email : <a href="mailto:zidatekitpro@gmail.com">zidatekitpro@gmail.com</a></p>
+      <p>Téléphone : <a href="tel:+212615362721">0615362721</a></p>
     </div>
   </div>
 </section>
 
-<section id="about">
-  <h2>À propos</h2>
-  <p>Je suis un spécialiste en support informatique, avec plusieurs années d’expérience en maintenance matérielle et logicielle, installation de réseaux et sécurisation des systèmes. Mon objectif est d’aider les entreprises et les particuliers à résoudre leurs problèmes techniques rapidement et efficacement.</p>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email : <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-  <p>Téléphone : +33 6 xx xx xx xx</p>
-  
-  <h3>Envoyer un message :</h3>
-  <form action="https://formspree.io/f/mayzvkjr" method="POST">
-    <input type="text" name="name" placeholder="Nom" required>
-    <input type="email" name="_replyto" placeholder="Adresse e-mail" required>
-    <textarea name="message" placeholder="Votre message" rows="5" required></textarea>
-    <button type="submit">Envoyer</button>
-  </form>
-</section>
-
 <footer>
-  &copy; 2025 Services IT Support. Tous droits réservés.
+  &copy; 2025 Zidane Abdel – IT Support
 </footer>
 
-  
+<script>
+  const accordions = document.querySelectorAll('.accordion');
+  accordions.forEach(acc => {
+    acc.addEventListener('click', () => {
+      acc.classList.toggle('active');
+      const panel = acc.nextElementSibling;
+      if(panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
