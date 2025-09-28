@@ -18,14 +18,32 @@
   header {
     background: #0078d7;
     color: #fff;
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 1rem;
     text-align: center;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    position: relative;
   }
   header h1 { margin: 0; font-size: 2.4rem; }
   header p { font-size: 1.2rem; margin-top: 0.5rem; }
+
+  /* Sélecteur de langue */
+  .lang-select {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #fff;
+    color: #0078d7;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+  }
+  .lang-select:hover { transform: scale(1.05); }
 
   section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
 
@@ -122,83 +140,44 @@
 <body>
 
 <header>
-  <h1>Abdelkebir Zidane</h1>
-  <p>IT Support Consultant – 14+ ans d'expérience en systèmes et réseaux</p>
+  <h1 data-lang="title">Abdelkebir Zidane</h1>
+  <p data-lang="subtitle">IT Support Consultant – 14+ ans d'expérience en systèmes et réseaux</p>
+  <select class="lang-select" id="languageSwitcher">
+    <option value="fr">Français</option>
+    <option value="en">English</option>
+    <option value="ar">العربية</option>
+    <option value="es">Español</option>
+  </select>
 </header>
 
 <section>
-
-  <button class="accordion active"><i class="fas fa-user"></i>À propos de moi</button>
+  <button class="accordion active"><i class="fas fa-user"></i><span data-lang="about">À propos de moi</span></button>
   <div class="panel show">
     <div class="panel-content">
-      <p>Professionnel IT Support spécialisé dans les <strong>systèmes et réseaux</strong> (Windows, iOS, serveurs), sécurité et téléphonie.</p>
-      <p>Je propose assistance, formation et accompagnement des utilisateurs pour garantir des systèmes performants, sécurisés et fiables.</p>
+      <p data-lang="aboutText1">Professionnel IT Support spécialisé dans les <strong>systèmes et réseaux</strong> (Windows, iOS, serveurs), sécurité et téléphonie.</p>
+      <p data-lang="aboutText2">Je propose assistance, formation et accompagnement des utilisateurs pour garantir des systèmes performants, sécurisés et fiables.</p>
     </div>
   </div>
 
-  <button class="accordion"><i class="fas fa-cogs"></i>Compétences</button>
+  <button class="accordion"><i class="fas fa-cogs"></i><span data-lang="skills">Compétences</span></button>
   <div class="panel">
     <div class="panel-content">
       <ul>
-        <li><strong>Maintenance et optimisation :</strong>
+        <li><strong data-lang="skill1">Maintenance et optimisation :</strong>
           <ul>
-            <li>Maintenance et optimisation des PC, serveurs et imprimantes</li>
-            <li>Diagnostic complet et mise à niveau de votre parc informatique</li>
-            <li>Support à distance pour une assistance rapide sans interruption</li>
-          </ul>
-        </li>
-        <li><strong>Réseaux et sécurité :</strong>
-          <ul>
-            <li>Installation, gestion et sécurisation des réseaux d’entreprise</li>
-            <li>Mise en place de nouveaux réseaux LAN selon les normes</li>
-            <li>Configuration LAN, VPN et Wi-Fi</li>
-            <li>Monitoring et supervision réseau</li>
-            <li>Sécurité, sauvegarde et récupération de données</li>
-          </ul>
-        </li>
-        <li><strong>Conseil stratégique IT :</strong>
-          <ul>
-            <li>Choix de logiciels adaptés</li>
-            <li>Amélioration des performances</li>
-            <li>Réduction des coûts informatiques</li>
-            <li>Accompagnement personnalisé pour garantir la continuité et l’efficacité des systèmes</li>
-          </ul>
-        </li>
-        <li><strong>Support technique systèmes :</strong>
-          <ul>
-            <li>Windows, iOS et serveurs</li>
-            <li>Diagnostic et résolution de problèmes matériels et logiciels</li>
-            <li>Accompagnement et formation des utilisateurs</li>
-          </ul>
-        </li>
-        <li><strong>Gestion de la téléphonie :</strong>
-          <ul>
-            <li>Support du standard téléphonique</li>
-            <li>Configuration et maintenance VoIP</li>
-          </ul>
-        </li>
-        <li><strong>Installation et suivi des périphériques :</strong>
-          <ul>
-            <li>Configuration de postes et serveurs</li>
-            <li>Installation et suivi des périphériques (imprimantes, scanners, routeurs)</li>
-          </ul>
-        </li>
-        <li><strong>Création de sites web et référencement :</strong>
-          <ul>
-            <li>Création de sites web statiques élégants et fonctionnels pour commerçants et petites entreprises</li>
-            <li>Optimisation SEO de base : titres, descriptions, mots-clés et structure H1/H2</li>
-            <li>Référencement local : Google Maps et Google My Business</li>
-            <li>Formation rapide pour la gestion autonome du site par le client</li>
+            <li data-lang="skill1a">Maintenance et optimisation des PC, serveurs et imprimantes</li>
+            <li data-lang="skill1b">Diagnostic complet et mise à niveau de votre parc informatique</li>
+            <li data-lang="skill1c">Support à distance pour une assistance rapide sans interruption</li>
           </ul>
         </li>
       </ul>
     </div>
   </div>
 
-  <button class="accordion"><i class="fas fa-envelope"></i>Contact</button>
+  <button class="accordion"><i class="fas fa-envelope"></i><span data-lang="contact">Contact</span></button>
   <div class="panel">
     <div class="panel-content">
-      <p style="padding:0.5rem 1rem; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius:1rem; margin-bottom:1rem; transition: transform 0.3s, color 0.3s;">
+      <p data-lang="contactText" style="padding:0.5rem 1rem; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius:1rem; margin-bottom:1rem;">
         N’hésitez pas à me contacter pour un <strong>diagnostic gratuit</strong> ou un <strong>devis personnalisé</strong>.
       </p>
       <div class="contact-card">
@@ -211,7 +190,6 @@
       </div>
     </div>
   </div>
-
 </section>
 
 <footer>
@@ -219,6 +197,83 @@
 </footer>
 
 <script>
+  const translations = {
+    fr: {
+      title: "Abdelkebir Zidane",
+      subtitle: "IT Support Consultant – 14+ ans d'expérience en systèmes et réseaux",
+      about: "À propos de moi",
+      aboutText1: "Professionnel IT Support spécialisé dans les <strong>systèmes et réseaux</strong> (Windows, iOS, serveurs), sécurité et téléphonie.",
+      aboutText2: "Je propose assistance, formation et accompagnement des utilisateurs pour garantir des systèmes performants, sécurisés et fiables.",
+      skills: "Compétences",
+      skill1: "Maintenance et optimisation :",
+      skill1a: "Maintenance et optimisation des PC, serveurs et imprimantes",
+      skill1b: "Diagnostic complet et mise à niveau de votre parc informatique",
+      skill1c: "Support à distance pour une assistance rapide sans interruption",
+      contact: "Contact",
+      contactText: "N’hésitez pas à me contacter pour un <strong>diagnostic gratuit</strong> ou un <strong>devis personnalisé</strong>."
+    },
+    en: {
+      title: "Abdelkebir Zidane",
+      subtitle: "IT Support Consultant – 14+ years of experience in systems and networks",
+      about: "About Me",
+      aboutText1: "IT Support professional specialized in <strong>systems and networks</strong> (Windows, iOS, servers), security and telephony.",
+      aboutText2: "I provide assistance, training and user support to ensure efficient, secure and reliable systems.",
+      skills: "Skills",
+      skill1: "Maintenance and Optimization:",
+      skill1a: "Maintenance and optimization of PCs, servers and printers",
+      skill1b: "Full diagnostics and upgrade of your IT infrastructure",
+      skill1c: "Remote support for fast and uninterrupted assistance",
+      contact: "Contact",
+      contactText: "Feel free to contact me for a <strong>free diagnostic</strong> or a <strong>personalized quote</strong>."
+    },
+    ar: {
+      title: "عبدالكبير زيدان",
+      subtitle: "مستشار دعم تقني – أكثر من 14 سنة خبرة في الأنظمة والشبكات",
+      about: "نبذة عني",
+      aboutText1: "محترف دعم تقني متخصص في <strong>الأنظمة والشبكات</strong> (ويندوز، iOS، الخوادم)، الأمن والاتصالات.",
+      aboutText2: "أقدم المساعدة، التدريب ومرافقة المستخدمين لضمان أنظمة فعالة وآمنة وموثوقة.",
+      skills: "المهارات",
+      skill1: "الصيانة والتحسين:",
+      skill1a: "صيانة وتحسين الحواسيب والخوادم والطابعات",
+      skill1b: "تشخيص شامل وتحديث البنية التحتية لتكنولوجيا المعلومات",
+      skill1c: "دعم عن بُعد لمساعدة سريعة دون انقطاع",
+      contact: "اتصال",
+      contactText: "لا تتردد في الاتصال بي للحصول على <strong>تشخيص مجاني</strong> أو <strong>عرض سعر مخصص</strong>."
+    },
+    es: {
+      title: "Abdelkebir Zidane",
+      subtitle: "Consultor de Soporte IT – Más de 14 años de experiencia en sistemas y redes",
+      about: "Sobre mí",
+      aboutText1: "Profesional de soporte IT especializado en <strong> sistemas y redes </strong> (Windows, iOS, servidores), seguridad y telefonía.",
+      aboutText2: "Ofrezco asistencia, formación y acompañamiento a los usuarios para garantizar sistemas eficientes, seguros y fiables.",
+      skills: "Competencias",
+      skill1: "Mantenimiento y optimización:",
+      skill1a: "Mantenimiento y optimización de PCs, servidores e impresoras",
+      skill1b: "Diagnóstico completo y actualización de su infraestructura IT",
+      skill1c: "Soporte remoto para una asistencia rápida sin interrupciones",
+      contact: "Contacto",
+      contactText: "No dude en contactarme para un <strong>diagnóstico gratuito</strong> o un <strong>presupuesto personalizado</strong>."
+    }
+  };
+
+  function updateLanguage(lang) {
+    document.querySelectorAll("[data-lang]").forEach(el => {
+      const key = el.getAttribute("data-lang");
+      if (translations[lang][key]) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+    document.documentElement.lang = lang;
+  }
+
+  document.getElementById("languageSwitcher").addEventListener("change", (e) => {
+    updateLanguage(e.target.value);
+  });
+
+  // Initialisation
+  updateLanguage("fr");
+
+  // Accordions
   const accordions = document.querySelectorAll('.accordion');
   accordions.forEach(acc => {
     acc.addEventListener('click', () => {
