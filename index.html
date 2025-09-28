@@ -153,7 +153,6 @@
     <option value="fr">FR</option>
     <option value="en">EN</option>
     <option value="ar">AR</option>
-    <option value="es">ES</option>
   </select>
 </header>
 
@@ -169,37 +168,23 @@
 
   <h2 style="margin-top:2rem; color:#0078d7;">Compétences</h2>
   <div class="skills-container">
-    <div class="skill-card"><div class="skill-header"><i class="fas fa-screwdriver-wrench"></i> Maintenance et optimisation</div>
-      <div class="skill-details"><ul><li>Maintenance et optimisation des PC, serveurs et imprimantes</li><li>Diagnostic complet et mise à niveau de votre parc informatique</li><li>Support à distance pour une assistance rapide sans interruption</li></ul></div></div>
-
-    <div class="skill-card"><div class="skill-header"><i class="fas fa-shield-halved"></i> Réseaux et sécurité</div>
-      <div class="skill-details"><ul><li>Installation, gestion et sécurisation des réseaux d’entreprise</li><li>Mise en place de nouveaux réseaux LAN selon les normes</li><li>Configuration LAN, VPN et Wi-Fi</li><li>Monitoring et supervision réseau</li><li>Sécurité, sauvegarde et récupération de données</li></ul></div></div>
-
-    <div class="skill-card"><div class="skill-header"><i class="fas fa-lightbulb"></i> Conseil stratégique IT</div>
-      <div class="skill-details"><ul><li>Choix de logiciels adaptés</li><li>Amélioration des performances</li><li>Réduction des coûts informatiques</li><li>Accompagnement personnalisé pour garantir la continuité et l’efficacité des systèmes</li></ul></div></div>
-
-    <div class="skill-card"><div class="skill-header"><i class="fas fa-desktop"></i> Support technique systèmes</div>
-      <div class="skill-details"><ul><li>Windows, iOS et serveurs</li><li>Diagnostic et résolution de problèmes matériels et logiciels</li><li>Accompagnement et formation des utilisateurs</li></ul></div></div>
-
-    <div class="skill-card"><div class="skill-header"><i class="fas fa-phone"></i> Gestion de la téléphonie</div>
-      <div class="skill-details"><ul><li>Support du standard téléphonique</li><li>Configuration et maintenance VoIP</li></ul></div></div>
-
-    <div class="skill-card"><div class="skill-header"><i class="fas fa-print"></i> Installation et suivi des périphériques</div>
-      <div class="skill-details"><ul><li>Configuration de postes et serveurs</li><li>Installation et suivi des périphériques (imprimantes, scanners, routeurs)</li></ul></div></div>
-
-    <div class="skill-card"><div class="skill-header"><i class="fas fa-globe"></i> Création de sites web et référencement</div>
-      <div class="skill-details"><ul><li>Création de sites web statiques élégants et fonctionnels pour commerçants et petites entreprises</li><li>Optimisation SEO de base : titres, descriptions, mots-clés et structure H1/H2</li><li>Référencement local : Google Maps et Google My Business</li><li>Formation rapide pour la gestion autonome du site par le client</li></ul></div></div>
+    <!-- 7 compétences avec détails identiques au français, anglaise et arabe via JS -->
+    <div class="skill-card"><div class="skill-header"><i class="fas fa-screwdriver-wrench"></i> Maintenance et optimisation</div><div class="skill-details"></div></div>
+    <div class="skill-card"><div class="skill-header"><i class="fas fa-shield-halved"></i> Réseaux et sécurité</div><div class="skill-details"></div></div>
+    <div class="skill-card"><div class="skill-header"><i class="fas fa-lightbulb"></i> Conseil stratégique IT</div><div class="skill-details"></div></div>
+    <div class="skill-card"><div class="skill-header"><i class="fas fa-desktop"></i> Support technique systèmes</div><div class="skill-details"></div></div>
+    <div class="skill-card"><div class="skill-header"><i class="fas fa-phone"></i> Gestion de la téléphonie</div><div class="skill-details"></div></div>
+    <div class="skill-card"><div class="skill-header"><i class="fas fa-print"></i> Installation et suivi des périphériques</div><div class="skill-details"></div></div>
+    <div class="skill-card"><div class="skill-header"><i class="fas fa-globe"></i> Création de sites web et référencement</div><div class="skill-details"></div></div>
   </div>
 
   <div class="accordion-main" style="margin-top:2rem;">
     <div class="accordion-header"><i class="fas fa-envelope"></i> Contact</div>
     <div class="accordion-content">
-      <p style="padding:0.5rem 1rem; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius:1rem; margin-bottom:1rem;">
-        N’hésitez pas à me contacter pour un <strong>diagnostic gratuit</strong> ou un <strong>devis personnalisé</strong>.
-      </p>
+      <p style="padding:0.5rem 1rem; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius:1rem; margin-bottom:1rem;"></p>
       <div class="contact-card"><i class="fas fa-envelope"></i><a href="mailto:zidatekitpro@gmail.com">zidatekitpro@gmail.com</a></div>
       <div class="contact-card"><i class="fas fa-phone"></i><a href="tel:+212615362721">0615362721</a></div>
-      <div class="contact-card"><i class="fab fa-whatsapp"></i><a href="https://wa.me/212615362721" target="_blank">WhatsApp: 0615362721</a></div>
+      <div class="contact-card"><i class="fab fa-whatsapp"></i><a href="https://wa.me/212615362721" target="_blank">WhatsApp</a></div>
     </div>
   </div>
 
@@ -210,66 +195,104 @@
 </footer>
 
 <script>
-// Accordions
-document.querySelectorAll('.accordion-main').forEach(acc => {
-  acc.querySelector('.accordion-header').addEventListener('click', () => {
-    const content = acc.querySelector('.accordion-content');
-    content.classList.toggle('show');
-    content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
-    acc.querySelector('.accordion-header').classList.toggle('active');
+  // Accordions
+  document.querySelectorAll('.accordion-header').forEach(header=>{
+    header.addEventListener('click', ()=>{
+      header.classList.toggle('active');
+      const content = header.nextElementSibling;
+      if(content.style.maxHeight){
+        content.style.maxHeight = null;
+        content.classList.remove('show');
+      }else{
+        content.style.maxHeight = content.scrollHeight + "px";
+        content.classList.add('show');
+      }
+    });
   });
-});
 
-// Skills cards
-document.querySelectorAll('.skill-card').forEach(card => {
-  card.querySelector('.skill-header').addEventListener('click', ()=>{
-    const details = card.querySelector('.skill-details');
-    details.classList.toggle('show');
-    details.style.maxHeight = details.style.maxHeight ? null : details.scrollHeight + "px";
+  // Skills toggle
+  document.querySelectorAll('.skill-card').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      const details = card.querySelector('.skill-details');
+      details.classList.toggle('show');
+      if(details.style.maxHeight) details.style.maxHeight = null;
+      else details.style.maxHeight = details.scrollHeight + "px";
+    });
   });
-});
 
-// Multilingue
-const translations = {
-  fr:{headerTitle:"Abdelkebir Zidane",headerSubtitle:"IT Support Consultant – 14+ ans d'expérience en systèmes et réseaux",
-      aboutHeader:"À propos de moi",aboutContent:`Professionnel IT Support spécialisé dans les <strong>systèmes et réseaux</strong> (Windows, iOS, serveurs), sécurité et téléphonie.
+  // Translations
+  const translations = {
+    fr:{aboutHeader:"À propos de moi",aboutContent:`Professionnel IT Support spécialisé dans les <strong>systèmes et réseaux</strong> (Windows, iOS, serveurs), sécurité et téléphonie.
       Je propose assistance, formation et accompagnement des utilisateurs pour garantir des systèmes performants, sécurisés et fiables.`,
-      skillsHeader:"Compétences",skillHeaders:["Maintenance et optimisation","Réseaux et sécurité","Conseil stratégique IT","Support technique systèmes","Gestion de la téléphonie","Installation et suivi des périphériques","Création de sites web et référencement"],
-      contactHeader:"Contact",contactContent:"N’hésitez pas à me contacter pour un diagnostic gratuit ou un devis personnalisé.",footerText:"© 2025 Abdelkebir Zidane – IT Support Consultant"},
-  en:{headerTitle:"Abdelkebir Zidane",headerSubtitle:"IT Support Consultant – 14+ years experience in systems & networks",
-      aboutHeader:"About Me",aboutContent:`Professional IT Support specialized in <strong>systems and networks</strong> (Windows, iOS, servers), security and telephony.
+      skillHeaders:["Maintenance et optimisation","Réseaux et sécurité","Conseil stratégique IT","Support technique systèmes","Gestion de la téléphonie","Installation et suivi des périphériques","Création de sites web et référencement"],
+      skillDetails:[
+        `<ul><li>Maintenance et optimisation des PC, serveurs et imprimantes</li><li>Diagnostic complet et mise à niveau de votre parc informatique</li><li>Support à distance pour une assistance rapide sans interruption</li></ul>`,
+        `<ul><li>Installation, gestion et sécurisation des réseaux d’entreprise</li><li>Mise en place de nouveaux réseaux LAN selon les normes</li><li>Configuration LAN, VPN et Wi-Fi</li><li>Monitoring et supervision réseau</li><li>Sécurité, sauvegarde et récupération de données</li></ul>`,
+        `<ul><li>Choix de logiciels adaptés</li><li>Amélioration des performances</li><li>Réduction des coûts informatiques</li><li>Accompagnement personnalisé pour garantir la continuité et l’efficacité des systèmes</li></ul>`,
+        `<ul><li>Windows, iOS et serveurs</li><li>Diagnostic et résolution de problèmes matériels et logiciels</li><li>Accompagnement et formation des utilisateurs</li></ul>`,
+        `<ul><li>Support du standard téléphonique</li><li>Configuration et maintenance VoIP</li></ul>`,
+        `<ul><li>Configuration de postes et serveurs</li><li>Installation et suivi des périphériques (imprimantes, scanners, routeurs)</li></ul>`,
+        `<ul><li>Création de sites web statiques élégants et fonctionnels pour commerçants et petites entreprises</li><li>Optimisation SEO de base : titres, descriptions, mots-clés et structure H1/H2</li><li>Référencement local : Google Maps et Google My Business</li><li>Formation rapide pour la gestion autonome du site par le client</li></ul>`],
+      contactHeader:"Contact",
+      contactContent:"N’hésitez pas à me contacter pour un diagnostic gratuit ou un devis personnalisé.",
+      footerText:"© 2025 Abdelkebir Zidane – IT Support Consultant"},
+    en:{aboutHeader:"About Me",aboutContent:`IT Support professional specialized in <strong>systems and networks</strong> (Windows, iOS, servers), security and telephony.
       I provide assistance, training and user support to ensure efficient, secure and reliable systems.`,
-      skillsHeader:"Skills",skillHeaders:["Maintenance & Optimization","Networks & Security","IT Strategic Consulting","Systems Technical Support","Telephony Management","Peripheral Installation & Monitoring","Website Creation & SEO"],
-      contactHeader:"Contact",contactContent:"Feel free to contact me for a free diagnosis or a personalized quote.",footerText:"© 2025 Abdelkebir Zidane – IT Support Consultant"},
-  ar:{headerTitle:"عبد الكبير زيدان",headerSubtitle:"مستشار دعم IT – أكثر من 14 سنة خبرة في الأنظمة والشبكات",
-      aboutHeader:"عنّي",aboutContent:`متخصص في دعم IT مع خبرة في <strong>الأنظمة والشبكات</strong> (Windows, iOS, الخوادم)، الأمان والهاتفية.
-      أقدم الدعم، التدريب ومساعدة المستخدمين لضمان أنظمة فعالة وآمنة وموثوقة.`,
-      skillsHeader:"المهارات",skillHeaders:["الصيانة والتحسين","الشبكات والأمان","الاستشارات الإستراتيجية IT","الدعم الفني للأنظمة","إدارة الهاتفية","تركيب ومتابعة الأجهزة الطرفية","إنشاء المواقع وتحسين محركات البحث"],
-      contactHeader:"اتصل بي",contactContent:"لا تتردد في الاتصال بي للحصول على تشخيص مجاني أو عرض مخصص.",footerText:"© 2025 عبد الكبير زيدان – مستشار دعم IT"},
-  es:{headerTitle:"Abdelkebir Zidane",headerSubtitle:"Consultor de Soporte IT – Más de 14 años de experiencia en sistemas y redes",
-      aboutHeader:"Sobre mí",aboutContent:`Profesional de Soporte IT especializado en <strong>sistemas y redes</strong> (Windows, iOS, servidores), seguridad y telefonía.
-      Ofrezco asistencia, formación y apoyo a los usuarios para garantizar sistemas eficientes, seguros y confiables.`,
-      skillsHeader:"Habilidades",skillHeaders:["Mantenimiento y Optimización","Redes y Seguridad","Consultoría Estratégica IT","Soporte Técnico de Sistemas","Gestión de Telefonía","Instalación y Seguimiento de Periféricos","Creación de Sitios Web y SEO"],
-      contactHeader:"Contacto",contactContent:"No dudes en contactarme para un diagnóstico gratuito o un presupuesto personalizado.",footerText:"© 2025 Abdelkebir Zidane – Consultor de Soporte IT"}
-};
+      skillHeaders:["Maintenance and Optimization","Network and Security","IT Strategic Consulting","Systems Technical Support","Telephony Management","Device Installation and Tracking","Website Creation and SEO"],
+      skillDetails:[
+        `<ul><li>Maintenance and optimization of PCs, servers and printers</li><li>Full diagnosis and upgrade of your IT infrastructure</li><li>Remote support for quick assistance without interruption</li></ul>`,
+        `<ul><li>Installation, management and security of corporate networks</li><li>Setup of new LAN networks according to standards</li><li>LAN, VPN and Wi-Fi configuration</li><li>Network monitoring and supervision</li><li>Security, backup and data recovery</li></ul>`,
+        `<ul><li>Choice of appropriate software</li><li>Performance improvement</li><li>IT cost reduction</li><li>Personalized support to ensure system continuity and efficiency</li></ul>`,
+        `<ul><li>Windows, iOS and servers</li><li>Hardware and software troubleshooting</li><li>User support and training</li></ul>`,
+        `<ul><li>Telephone switchboard support</li><li>VoIP configuration and maintenance</li></ul>`,
+        `<ul><li>Setup of workstations and servers</li><li>Installation and monitoring of peripherals (printers, scanners, routers)</li></ul>`,
+        `<ul><li>Elegant and functional static websites for merchants and small businesses</li><li>Basic SEO optimization: titles, descriptions, keywords, H1/H2 structure</li><li>Local SEO: Google Maps and Google My Business</li><li>Quick training for autonomous site management</li></ul>`],
+      contactHeader:"Contact",
+      contactContent:"Do not hesitate to contact me for a free assessment or personalized quote.",
+      footerText:"© 2025 Abdelkebir Zidane – IT Support Consultant"},
+    ar:{aboutHeader:"عنّي",aboutContent:`محترف دعم IT متخصص في <strong>الأنظمة والشبكات</strong> (ويندوز، iOS، الخوادم)، الأمن والهواتف.
+      أقدّم الدعم، التدريب ومرافقة المستخدمين لضمان أنظمة فعّالة وآمنة وموثوقة.`,
+      skillHeaders:["الصيانة والتحسين","الشبكات والأمان","الاستشارات الاستراتيجية لتكنولوجيا المعلومات","الدعم الفني للأنظمة","إدارة الهاتف","تركيب ومتابعة الأجهزة","إنشاء المواقع وتحسين محركات البحث"],
+      skillDetails:[
+        `<ul><li>صيانة وتحسين أجهزة الكمبيوتر والخوادم والطابعات</li><li>تشخيص كامل وتحديث البنية التحتية لتكنولوجيا المعلومات</li><li>الدعم عن بعد لمساعدة سريعة دون انقطاع</li></ul>`,
+        `<ul><li>تركيب وإدارة وتأمين شبكات الشركات</li><li>إنشاء شبكات LAN جديدة وفق المعايير</li><li>إعداد LAN، VPN وWi-Fi</li><li>مراقبة وإشراف الشبكة</li><li>الأمن، النسخ الاحتياطي واستعادة البيانات</li></ul>`,
+        `<ul><li>اختيار البرامج المناسبة</li><li>تحسين الأداء</li><li>تقليل تكاليف تكنولوجيا المعلومات</li><li>دعم مخصص لضمان استمرارية وكفاءة الأنظمة</li></ul>`,
+        `<ul><li>ويندوز، iOS والخوادم</li><li>تشخيص وحل مشاكل الأجهزة والبرامج</li><li>مرافقة وتدريب المستخدمين</li></ul>`,
+        `<ul><li>دعم الهاتف</li><li>إعداد وصيانة VoIP</li></ul>`,
+        `<ul><li>إعداد الأجهزة والخوادم</li><li>تركيب ومتابعة الأجهزة الطرفية (طابعات، ماسحات ضوئية، راوترات)</li></ul>`,
+        `<ul><li>إنشاء مواقع ثابتة أنيقة وفعّالة للتجار والشركات الصغيرة</li><li>تحسين SEO أساسي: العناوين، الوصف، الكلمات المفتاحية، هيكل H1/H2</li><li>SEO محلي: خرائط Google وGoogle My Business</li><li>تدريب سريع لإدارة الموقع بشكل مستقل</li></ul>`],
+      contactHeader:"اتصل بي",
+      contactContent:"لا تتردد في التواصل معي للحصول على تقييم مجاني أو عرض سعر مخصص.",
+      footerText:"© 2025 عبد الكبير زيدان – استشاري دعم تكنولوجيا المعلومات"}
+  };
 
-document.getElementById('languageSwitcher').addEventListener('change', function(){
-  const lang = this.value;
-  const t = translations[lang];
-  if(!t) return;
-  document.querySelector('header h1').textContent = t.headerTitle;
-  document.querySelector('header p').textContent = t.headerSubtitle;
-  document.querySelectorAll('.accordion-main')[0].querySelector('.accordion-header').innerHTML='<i class="fas fa-user"></i> '+t.aboutHeader;
-  document.querySelectorAll('.accordion-main')[0].querySelector('.accordion-content').innerHTML=t.aboutContent;
-  document.querySelector('h2').textContent=t.skillsHeader;
-  document.querySelectorAll('.skill-card').forEach((card,i)=>{
-    const icons=["fas fa-screwdriver-wrench","fas fa-shield-halved","fas fa-lightbulb","fas fa-desktop","fas fa-phone","fas fa-print","fas fa-globe"];
-    card.querySelector('.skill-header').innerHTML='<i class="'+icons[i]+'"></i> '+t.skillHeaders[i];
+  document.getElementById('languageSwitcher').addEventListener('change', e=>{
+    const lang = e.target.value;
+    const t = translations[lang];
+
+    document.querySelector('header h1').textContent = lang==='ar'?t.headerTitle||document.querySelector('header h1').textContent:document.querySelector('header h1').textContent;
+    document.querySelector('header p').textContent = lang==='fr'?t.headerSubtitle:lang==='en'?t.headerSubtitle:t.headerSubtitle;
+
+    // À propos
+    const aboutAcc = document.querySelectorAll('.accordion-main')[0];
+    aboutAcc.querySelector('.accordion-header').innerHTML='<i class="fas fa-user"></i> '+t.aboutHeader;
+    aboutAcc.querySelector('.accordion-content').innerHTML=t.aboutContent;
+
+    // Compétences
+    document.querySelectorAll('.skill-card').forEach((card,i)=>{
+      const icons=["fas fa-screwdriver-wrench","fas fa-shield-halved","fas fa-lightbulb","fas fa-desktop","fas fa-phone","fas fa-print","fas fa-globe"];
+      card.querySelector('.skill-header').innerHTML='<i class="'+icons[i]+'"></i> '+t.skillHeaders[i];
+      card.querySelector('.skill-details').innerHTML=t.skillDetails[i];
+    });
+
+    // Contact
+    const contactAcc = document.querySelectorAll('.accordion-main')[1];
+    contactAcc.querySelector('.accordion-header').innerHTML='<i class="fas fa-envelope"></i> '+t.contactHeader;
+    contactAcc.querySelector('.accordion-content p').textContent=t.contactContent;
+
+    // Footer
+    document.querySelector('footer').textContent=t.footerText;
   });
-  document.querySelectorAll('.accordion-main')[1].querySelector('.accordion-header').innerHTML='<i class="fas fa-envelope"></i> '+t.contactHeader;
-  document.querySelectorAll('.accordion-main')[1].querySelector('.accordion-content p').textContent=t.contactContent;
-  document.querySelector('footer').textContent=t.footerText;
-});
 </script>
 
 </body>
