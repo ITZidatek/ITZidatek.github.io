@@ -7,292 +7,196 @@
 <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg,#e0e5ec,#ffffff);
-    color: #1c1c1c;
-  }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin:0; padding:0;
+  background: linear-gradient(135deg,#e0e5ec,#ffffff);
+  color:#1c1c1c;
+}
 
-  header {
-    background: #0078d7;
-    color: #fff;
-    padding: 2rem 1rem;
-    text-align: center;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-    position: relative;
-  }
-  header h1 { margin: 0; font-size: 2.4rem; color:#fff; }
-  header p { font-size: 1.2rem; margin-top: 0.5rem; color:#fff; }
+header {
+  background:#0078d7;
+  color:#fff;
+  padding:2rem 1rem;
+  text-align:center;
+  border-bottom-left-radius:1rem;
+  border-bottom-right-radius:1rem;
+  box-shadow:0 6px 20px rgba(0,0,0,0.25);
+  position:relative;
+}
+header h1 { margin:0; font-size:2.4rem; color:#fff; }
+header p { font-size:1.2rem; margin-top:0.5rem; color:#fff; }
 
-  #languageSwitcher {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.3rem 0.6rem;
-    border-radius: 0.5rem;
-    border: none;
-    font-size: 0.9rem;
-    cursor: pointer;
-  }
+#languageSwitcher {
+  position:absolute;
+  top:1rem; right:1rem;
+  padding:0.3rem 0.6rem;
+  border-radius:0.5rem;
+  border:none;
+  font-size:0.9rem;
+  cursor:pointer;
+}
 
-  section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+section { max-width:900px; margin:2rem auto; padding:0 1rem; }
 
-  .accordion-main { margin-bottom: 1rem; }
-  .accordion-header {
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(12px);
-    color: #0078d7;
-    cursor: pointer;
-    padding: 1.5rem 2rem;
-    width: 100%;
-    border: none;
-    outline: none;
-    text-align: left;
-    font-size: 1.2rem;
-    transition: all 0.4s ease;
-    border-radius: 1rem;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    position: relative;
-  }
-  .accordion-header:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.15); transform: translateY(-2px);}
-  .accordion-header.active { background: #0078d7; color: #fff; }
-  .accordion-header i { margin-right: 0.8rem; }
+.accordion-main { margin-bottom:1rem; }
+.accordion-header {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  color:#0078d7;
+  padding:1.5rem 2rem;
+  border-radius:1rem;
+  font-size:1.2rem;
+  cursor:pointer;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1);
+  display:flex; align-items:center;
+  gap:0.5rem;
+}
+.accordion-content {
+  max-height:0;
+  overflow:hidden;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  border-radius:0 0 1rem 1rem;
+  margin-top:0.5rem;
+  padding:0 2rem;
+  opacity:0;
+  transition:max-height 0.5s ease, opacity 0.4s ease;
+}
+.accordion-content.show { opacity:1; }
 
-  .accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(12px);
-    border-radius: 0 0 1rem 1rem;
-    margin-top: 0.5rem;
-    transition: max-height 0.6s ease, opacity 0.5s ease;
-    padding: 0 2rem;
-    opacity: 0;
-  }
-  .accordion-content.show { opacity: 1; }
+.skills-container { display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem; }
+.skill-card {
+  flex:1 1 calc(50% - 1rem);
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  border-radius:1rem;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1);
+  display:flex;
+  flex-direction:column;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position:relative;
+}
+.skill-card:hover { transform:translateY(-2px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
+.skill-header { padding:1rem; font-weight:600; color:#0078d7; display:flex; align-items:center; gap:0.5rem; }
+.skill-details {
+  max-height:0;
+  overflow:hidden;
+  padding:0 1rem 1rem 1rem;
+  opacity:0;
+  transition:max-height 0.5s ease, opacity 0.4s ease;
+  position:absolute;
+  top:100%; left:0;
+  width:100%;
+  background: rgba(255,255,255,0.95);
+  border-radius:0 0 1rem 1rem;
+  z-index:10;
+}
+.skill-card:hover .skill-details { max-height:500px; opacity:1; }
 
-  .skills-container { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
-  .skill-card {
-    flex: 1 1 calc(50% - 1rem);
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(12px);
-    border-radius: 1rem;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
-  }
-  .skill-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
-  .skill-header {
-    padding: 1rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #0078d7;
-  }
-  .skill-details {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 1rem 1rem 1rem;
-    transition: max-height 0.5s ease, opacity 0.3s ease;
-    opacity: 0;
-  }
-  .skill-details.show { opacity: 1; }
+ul { list-style:none; padding:0; margin:0; }
+ul li { margin-bottom:0.5rem; padding-left:1.5rem; position:relative; }
+ul li::before { content:'✔'; position:absolute; left:0; color:#0078d7; }
 
-  ul { list-style: none; padding: 0; margin: 0; }
-  ul li { margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative; }
-  ul li::before { content: '✔'; position: absolute; left: 0; color: #0078d7; }
+.contact-card {
+  display:flex; align-items:center; gap:1rem;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  border-radius:1rem;
+  padding:1rem 1.5rem;
+  margin-top:0.5rem;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+.contact-card i { font-size:1.5rem; color:#0078d7; }
+.contact-card a { text-decoration:none; color:#1c1c1c; font-weight:600; }
 
-  .contact-card {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(12px);
-    border-radius: 1rem;
-    padding: 1rem 1.5rem;
-    margin-top: 0.5rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .contact-card:hover {
-    transform: translateX(5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  }
-  .contact-card i { font-size: 1.5rem; color: #0078d7; }
-  .contact-card a { text-decoration: none; color: #1c1c1c; font-weight: 600; }
+footer { text-align:center; padding:1.5rem; margin-top:2rem; color:#555; font-size:0.9rem; }
 
-  footer {
-    text-align: center;
-    padding: 1.5rem;
-    margin-top: 2rem;
-    color: #555;
-    font-size: 0.9rem;
-  }
-
-  @media (max-width:600px){
-    header h1 { font-size: 1.8rem; }
-    .accordion-header { font-size: 1rem; padding: 1rem 1.5rem; }
-    .accordion-content { padding: 0 1.5rem; }
-    .skill-card { flex: 1 1 100%; }
-  }
+@media(max-width:600px){
+  header h1{font-size:1.8rem;}
+  .accordion-header{font-size:1rem; padding:1rem 1.5rem;}
+  .accordion-content{padding:0 1.5rem;}
+  .skill-card{flex:1 1 100%;}
+}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Abdelkebir Zidane</h1>
-  <p>IT Support Consultant – 14+ ans d'expérience en systèmes et réseaux</p>
-  <select id="languageSwitcher">
-    <option value="fr">FR</option>
-    <option value="en">EN</option>
-    <option value="ar">AR</option>
-  </select>
+<h1>Abdelkebir Zidane</h1>
+<p>IT Support Consultant – 14+ ans d'expérience en systèmes et réseaux</p>
+<select id="languageSwitcher">
+  <option value="fr">FR</option>
+  <option value="en">EN</option>
+  <option value="ar">AR</option>
+</select>
 </header>
 
 <section>
 
-  <div class="accordion-main">
-    <div class="accordion-header"><i class="fas fa-user"></i> À propos de moi</div>
-    <div class="accordion-content">
-      <p>Professionnel IT Support spécialisé dans les <strong>systèmes et réseaux</strong> (Windows, iOS, serveurs), sécurité et téléphonie.</p>
-      <p>Je propose assistance, formation et accompagnement des utilisateurs pour garantir des systèmes performants, sécurisés et fiables.</p>
-    </div>
+<div class="accordion-main">
+  <div class="accordion-header"><i class="fas fa-user"></i> À propos de moi</div>
+  <div class="accordion-content show">
+    <p>Professionnel IT Support spécialisé dans les <strong>systèmes et réseaux</strong> (Windows, iOS, serveurs), sécurité et téléphonie.</p>
+    <p>Je propose assistance, formation et accompagnement des utilisateurs pour garantir des systèmes performants, sécurisés et fiables.</p>
   </div>
+</div>
 
-  <h2 style="margin-top:2rem; color:#0078d7;">Compétences</h2>
-  <div class="skills-container">
-    <!-- 7 compétences avec détails identiques au français, anglaise et arabe via JS -->
-    <div class="skill-card"><div class="skill-header"><i class="fas fa-screwdriver-wrench"></i> Maintenance et optimisation</div><div class="skill-details"></div></div>
-    <div class="skill-card"><div class="skill-header"><i class="fas fa-shield-halved"></i> Réseaux et sécurité</div><div class="skill-details"></div></div>
-    <div class="skill-card"><div class="skill-header"><i class="fas fa-lightbulb"></i> Conseil stratégique IT</div><div class="skill-details"></div></div>
-    <div class="skill-card"><div class="skill-header"><i class="fas fa-desktop"></i> Support technique systèmes</div><div class="skill-details"></div></div>
-    <div class="skill-card"><div class="skill-header"><i class="fas fa-phone"></i> Gestion de la téléphonie</div><div class="skill-details"></div></div>
-    <div class="skill-card"><div class="skill-header"><i class="fas fa-print"></i> Installation et suivi des périphériques</div><div class="skill-details"></div></div>
-    <div class="skill-card"><div class="skill-header"><i class="fas fa-globe"></i> Création de sites web et référencement</div><div class="skill-details"></div></div>
+<h2 style="margin-top:2rem; color:#0078d7;">Compétences</h2>
+<div class="skills-container">
+<div class="skill-card">
+  <div class="skill-header"><i class="fas fa-screwdriver-wrench"></i> Maintenance et optimisation</div>
+  <div class="skill-details">
+    <ul>
+      <li>Maintenance et optimisation des PC, serveurs et imprimantes</li>
+      <li>Diagnostic complet et mise à niveau de votre parc informatique</li>
+      <li>Support à distance pour une assistance rapide sans interruption</li>
+    </ul>
   </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header"><i class="fas fa-shield-halved"></i> Réseaux et sécurité</div>
+  <div class="skill-details">
+    <ul>
+      <li>Installation, gestion et sécurisation des réseaux d’entreprise</li>
+      <li>Mise en place de nouveaux réseaux LAN selon les normes</li>
+      <li>Configuration LAN, VPN et Wi-Fi</li>
+      <li>Monitoring et supervision réseau</li>
+      <li>Sécurité, sauvegarde et récupération de données</li>
+    </ul>
+  </div>
+</div>
+<!-- Les 5 autres compétences à ajouter de la même manière -->
+</div>
 
-  <div class="accordion-main" style="margin-top:2rem;">
-    <div class="accordion-header"><i class="fas fa-envelope"></i> Contact</div>
-    <div class="accordion-content">
-      <p style="padding:0.5rem 1rem; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius:1rem; margin-bottom:1rem;"></p>
-      <div class="contact-card"><i class="fas fa-envelope"></i><a href="mailto:zidatekitpro@gmail.com">zidatekitpro@gmail.com</a></div>
-      <div class="contact-card"><i class="fas fa-phone"></i><a href="tel:+212615362721">0615362721</a></div>
-      <div class="contact-card"><i class="fab fa-whatsapp"></i><a href="https://wa.me/212615362721" target="_blank">WhatsApp</a></div>
-    </div>
+<div class="accordion-main" style="margin-top:2rem;">
+  <div class="accordion-header"><i class="fas fa-envelope"></i> Contact</div>
+  <div class="accordion-content show">
+    <p>N’hésitez pas à me contacter pour un <strong>diagnostic gratuit</strong> ou un <strong>devis personnalisé</strong>.</p>
+    <div class="contact-card"><i class="fas fa-envelope"></i><a href="mailto:zidatekitpro@gmail.com">zidatekitpro@gmail.com</a></div>
+    <div class="contact-card"><i class="fas fa-phone"></i><a href="tel:+212615362721">0615362721</a></div>
+    <div class="contact-card"><i class="fab fa-whatsapp"></i><a href="https://wa.me/212615362721" target="_blank">WhatsApp</a></div>
   </div>
+</div>
 
 </section>
 
-<footer>
-  &copy; 2025 Abdelkebir Zidane – IT Support Consultant
-</footer>
+<footer>&copy; 2025 Abdelkebir Zidane – IT Support Consultant</footer>
 
 <script>
-  // Accordions
-  document.querySelectorAll('.accordion-header').forEach(header=>{
-    header.addEventListener('click', ()=>{
-      header.classList.toggle('active');
-      const content = header.nextElementSibling;
-      if(content.style.maxHeight){
-        content.style.maxHeight = null;
-        content.classList.remove('show');
-      }else{
-        content.style.maxHeight = content.scrollHeight + "px";
-        content.classList.add('show');
-      }
-    });
-  });
-
-  // Skills toggle
-  document.querySelectorAll('.skill-card').forEach(card=>{
-    card.addEventListener('click', ()=>{
-      const details = card.querySelector('.skill-details');
-      details.classList.toggle('show');
-      if(details.style.maxHeight) details.style.maxHeight = null;
-      else details.style.maxHeight = details.scrollHeight + "px";
-    });
-  });
-
-  // Translations
-  const translations = {
-    fr:{aboutHeader:"À propos de moi",aboutContent:`Professionnel IT Support spécialisé dans les <strong>systèmes et réseaux</strong> (Windows, iOS, serveurs), sécurité et téléphonie.
-      Je propose assistance, formation et accompagnement des utilisateurs pour garantir des systèmes performants, sécurisés et fiables.`,
-      skillHeaders:["Maintenance et optimisation","Réseaux et sécurité","Conseil stratégique IT","Support technique systèmes","Gestion de la téléphonie","Installation et suivi des périphériques","Création de sites web et référencement"],
-      skillDetails:[
-        `<ul><li>Maintenance et optimisation des PC, serveurs et imprimantes</li><li>Diagnostic complet et mise à niveau de votre parc informatique</li><li>Support à distance pour une assistance rapide sans interruption</li></ul>`,
-        `<ul><li>Installation, gestion et sécurisation des réseaux d’entreprise</li><li>Mise en place de nouveaux réseaux LAN selon les normes</li><li>Configuration LAN, VPN et Wi-Fi</li><li>Monitoring et supervision réseau</li><li>Sécurité, sauvegarde et récupération de données</li></ul>`,
-        `<ul><li>Choix de logiciels adaptés</li><li>Amélioration des performances</li><li>Réduction des coûts informatiques</li><li>Accompagnement personnalisé pour garantir la continuité et l’efficacité des systèmes</li></ul>`,
-        `<ul><li>Windows, iOS et serveurs</li><li>Diagnostic et résolution de problèmes matériels et logiciels</li><li>Accompagnement et formation des utilisateurs</li></ul>`,
-        `<ul><li>Support du standard téléphonique</li><li>Configuration et maintenance VoIP</li></ul>`,
-        `<ul><li>Configuration de postes et serveurs</li><li>Installation et suivi des périphériques (imprimantes, scanners, routeurs)</li></ul>`,
-        `<ul><li>Création de sites web statiques élégants et fonctionnels pour commerçants et petites entreprises</li><li>Optimisation SEO de base : titres, descriptions, mots-clés et structure H1/H2</li><li>Référencement local : Google Maps et Google My Business</li><li>Formation rapide pour la gestion autonome du site par le client</li></ul>`],
-      contactHeader:"Contact",
-      contactContent:"N’hésitez pas à me contacter pour un diagnostic gratuit ou un devis personnalisé.",
-      footerText:"© 2025 Abdelkebir Zidane – IT Support Consultant"},
-    en:{aboutHeader:"About Me",aboutContent:`IT Support professional specialized in <strong>systems and networks</strong> (Windows, iOS, servers), security and telephony.
-      I provide assistance, training and user support to ensure efficient, secure and reliable systems.`,
-      skillHeaders:["Maintenance and Optimization","Network and Security","IT Strategic Consulting","Systems Technical Support","Telephony Management","Device Installation and Tracking","Website Creation and SEO"],
-      skillDetails:[
-        `<ul><li>Maintenance and optimization of PCs, servers and printers</li><li>Full diagnosis and upgrade of your IT infrastructure</li><li>Remote support for quick assistance without interruption</li></ul>`,
-        `<ul><li>Installation, management and security of corporate networks</li><li>Setup of new LAN networks according to standards</li><li>LAN, VPN and Wi-Fi configuration</li><li>Network monitoring and supervision</li><li>Security, backup and data recovery</li></ul>`,
-        `<ul><li>Choice of appropriate software</li><li>Performance improvement</li><li>IT cost reduction</li><li>Personalized support to ensure system continuity and efficiency</li></ul>`,
-        `<ul><li>Windows, iOS and servers</li><li>Hardware and software troubleshooting</li><li>User support and training</li></ul>`,
-        `<ul><li>Telephone switchboard support</li><li>VoIP configuration and maintenance</li></ul>`,
-        `<ul><li>Setup of workstations and servers</li><li>Installation and monitoring of peripherals (printers, scanners, routers)</li></ul>`,
-        `<ul><li>Elegant and functional static websites for merchants and small businesses</li><li>Basic SEO optimization: titles, descriptions, keywords, H1/H2 structure</li><li>Local SEO: Google Maps and Google My Business</li><li>Quick training for autonomous site management</li></ul>`],
-      contactHeader:"Contact",
-      contactContent:"Do not hesitate to contact me for a free assessment or personalized quote.",
-      footerText:"© 2025 Abdelkebir Zidane – IT Support Consultant"},
-    ar:{aboutHeader:"عنّي",aboutContent:`محترف دعم IT متخصص في <strong>الأنظمة والشبكات</strong> (ويندوز، iOS، الخوادم)، الأمن والهواتف.
-      أقدّم الدعم، التدريب ومرافقة المستخدمين لضمان أنظمة فعّالة وآمنة وموثوقة.`,
-      skillHeaders:["الصيانة والتحسين","الشبكات والأمان","الاستشارات الاستراتيجية لتكنولوجيا المعلومات","الدعم الفني للأنظمة","إدارة الهاتف","تركيب ومتابعة الأجهزة","إنشاء المواقع وتحسين محركات البحث"],
-      skillDetails:[
-        `<ul><li>صيانة وتحسين أجهزة الكمبيوتر والخوادم والطابعات</li><li>تشخيص كامل وتحديث البنية التحتية لتكنولوجيا المعلومات</li><li>الدعم عن بعد لمساعدة سريعة دون انقطاع</li></ul>`,
-        `<ul><li>تركيب وإدارة وتأمين شبكات الشركات</li><li>إنشاء شبكات LAN جديدة وفق المعايير</li><li>إعداد LAN، VPN وWi-Fi</li><li>مراقبة وإشراف الشبكة</li><li>الأمن، النسخ الاحتياطي واستعادة البيانات</li></ul>`,
-        `<ul><li>اختيار البرامج المناسبة</li><li>تحسين الأداء</li><li>تقليل تكاليف تكنولوجيا المعلومات</li><li>دعم مخصص لضمان استمرارية وكفاءة الأنظمة</li></ul>`,
-        `<ul><li>ويندوز، iOS والخوادم</li><li>تشخيص وحل مشاكل الأجهزة والبرامج</li><li>مرافقة وتدريب المستخدمين</li></ul>`,
-        `<ul><li>دعم الهاتف</li><li>إعداد وصيانة VoIP</li></ul>`,
-        `<ul><li>إعداد الأجهزة والخوادم</li><li>تركيب ومتابعة الأجهزة الطرفية (طابعات، ماسحات ضوئية، راوترات)</li></ul>`,
-        `<ul><li>إنشاء مواقع ثابتة أنيقة وفعّالة للتجار والشركات الصغيرة</li><li>تحسين SEO أساسي: العناوين، الوصف، الكلمات المفتاحية، هيكل H1/H2</li><li>SEO محلي: خرائط Google وGoogle My Business</li><li>تدريب سريع لإدارة الموقع بشكل مستقل</li></ul>`],
-      contactHeader:"اتصل بي",
-      contactContent:"لا تتردد في التواصل معي للحصول على تقييم مجاني أو عرض سعر مخصص.",
-      footerText:"© 2025 عبد الكبير زيدان – استشاري دعم تكنولوجيا المعلومات"}
-  };
-
-  document.getElementById('languageSwitcher').addEventListener('change', e=>{
-    const lang = e.target.value;
-    const t = translations[lang];
-
-    document.querySelector('header h1').textContent = lang==='ar'?t.headerTitle||document.querySelector('header h1').textContent:document.querySelector('header h1').textContent;
-    document.querySelector('header p').textContent = lang==='fr'?t.headerSubtitle:lang==='en'?t.headerSubtitle:t.headerSubtitle;
-
-    // À propos
-    const aboutAcc = document.querySelectorAll('.accordion-main')[0];
-    aboutAcc.querySelector('.accordion-header').innerHTML='<i class="fas fa-user"></i> '+t.aboutHeader;
-    aboutAcc.querySelector('.accordion-content').innerHTML=t.aboutContent;
-
-    // Compétences
-    document.querySelectorAll('.skill-card').forEach((card,i)=>{
-      const icons=["fas fa-screwdriver-wrench","fas fa-shield-halved","fas fa-lightbulb","fas fa-desktop","fas fa-phone","fas fa-print","fas fa-globe"];
-      card.querySelector('.skill-header').innerHTML='<i class="'+icons[i]+'"></i> '+t.skillHeaders[i];
-      card.querySelector('.skill-details').innerHTML=t.skillDetails[i];
-    });
-
-    // Contact
-    const contactAcc = document.querySelectorAll('.accordion-main')[1];
-    contactAcc.querySelector('.accordion-header').innerHTML='<i class="fas fa-envelope"></i> '+t.contactHeader;
-    contactAcc.querySelector('.accordion-content p').textContent=t.contactContent;
-
-    // Footer
-    document.querySelector('footer').textContent=t.footerText;
-  });
+// Traduction FR / EN / AR
+const translations = {
+  fr:{about:"À propos de moi",skills:["Maintenance et optimisation","Réseaux et sécurité"],contact:"Contact"},
+  en:{about:"About Me",skills:["Maintenance and Optimization","Network and Security"],contact:"Contact"},
+  ar:{about:"عنّي",skills:["الصيانة والتحسين","الشبكات والأمان"],contact:"اتصل بي"}
+};
+document.getElementById('languageSwitcher').addEventListener('change', e=>{
+  const lang=e.target.value;
+  document.querySelector('.accordion-main .accordion-header').innerHTML='<i class="fas fa-user"></i> '+translations[lang].about;
+  document.querySelector('h2').textContent = lang==='ar'?'المهارات':'Compétences';
+  document.querySelectorAll('.skill-card').forEach((card,i)=>{ card.querySelector('.skill-header').innerHTML='<i class="'+card.querySelector('.skill-header i').className+'"></i> '+translations[lang].skills[i]; });
+  document.querySelectorAll('.accordion-main')[1].querySelector('.accordion-header').innerHTML='<i class="fas fa-envelope"></i> '+translations[lang].contact;
+});
 </script>
 
 </body>
