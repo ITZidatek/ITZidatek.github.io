@@ -128,8 +128,8 @@
 
 <section>
 
-  <button class="accordion"><i class="fas fa-user"></i>À propos de moi</button>
-  <div class="panel">
+  <button class="accordion active"><i class="fas fa-user"></i>À propos de moi</button>
+  <div class="panel show">
     <div class="panel-content">
       <p>Professionnel IT Support spécialisé dans les <strong>systèmes et réseaux</strong> (Windows, iOS, serveurs), sécurité et téléphonie.</p>
       <p>Je propose assistance, formation et accompagnement des utilisateurs pour garantir des systèmes performants, sécurisés et fiables.</p>
@@ -186,9 +186,10 @@
         <li><strong>Création de sites web et référencement :</strong>
           <ul>
             <li>Création de sites web statiques élégants et fonctionnels pour commerçants et petites entreprises</li>
+            <li>Optimisation SEO de base : titres, descriptions, mots-clés et structure H1/H2</li>
             <li>Référencement local : Google Maps et Google My Business</li>
-            <li>Maintenance, mises à jour et support pour le site</li>
-            </ul>
+            <li>Formation rapide pour la gestion autonome du site par le client</li>
+          </ul>
         </li>
       </ul>
     </div>
@@ -225,4 +226,14 @@
       const panel = acc.nextElementSibling;
       if(panel.style.maxHeight){
         panel.style.maxHeight = null;
-        panel.classList.remove
+        panel.classList.remove('show');
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        panel.classList.add('show');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
