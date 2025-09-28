@@ -66,7 +66,6 @@
 
   .panel-content { padding: 1rem 0; }
 
-  /* Paragraphs & list items hover effect */
   .panel-content p, .panel-content ul li {
     transition: transform 0.3s, color 0.3s;
   }
@@ -79,7 +78,6 @@
   ul li { margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative; }
   ul li::before { content: '✔'; position: absolute; left: 0; color: #0078d7; }
 
-  /* Contact card */
   .contact-card {
     display: flex;
     align-items: center;
@@ -185,6 +183,13 @@
             <li>Installation et suivi des périphériques (imprimantes, scanners, routeurs)</li>
           </ul>
         </li>
+        <li><strong>Création de sites web et référencement :</strong>
+          <ul>
+            <li>Création de sites web statiques élégants et fonctionnels pour commerçants et petites entreprises</li>
+            <li>Référencement local : Google Maps et Google My Business</li>
+            <li>Maintenance, mises à jour et support pour le site</li>
+            </ul>
+        </li>
       </ul>
     </div>
   </div>
@@ -220,14 +225,4 @@
       const panel = acc.nextElementSibling;
       if(panel.style.maxHeight){
         panel.style.maxHeight = null;
-        panel.classList.remove('show');
-      } else {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-        panel.classList.add('show');
-      }
-    });
-  });
-</script>
-
-</body>
-</html>
+        panel.classList.remove
