@@ -13,7 +13,6 @@ body {
   background: linear-gradient(135deg,#e0e5ec,#ffffff);
   color:#1c1c1c;
 }
-
 header {
   background:#0078d7;
   color:#fff;
@@ -24,17 +23,13 @@ header {
   box-shadow:0 6px 20px rgba(0,0,0,0.25);
   position:relative;
 }
-header h1 { margin:0; font-size:2.4rem; color:#fff; }
-header p { font-size:1.2rem; margin-top:0.5rem; color:#fff; }
-
+header h1, header p { color:#fff; margin:0; }
+header h1 { font-size:2.4rem; }
+header p { font-size:1.2rem; margin-top:0.5rem; }
 #languageSwitcher {
-  position:absolute;
-  top:1rem; right:1rem;
-  padding:0.3rem 0.6rem;
-  border-radius:0.5rem;
-  border:none;
-  font-size:0.9rem;
-  cursor:pointer;
+  position:absolute; top:1rem; right:1rem;
+  padding:0.3rem 0.6rem; border-radius:0.5rem;
+  border:none; font-size:0.9rem; cursor:pointer;
 }
 
 section { max-width:900px; margin:2rem auto; padding:0 1rem; }
@@ -49,22 +44,15 @@ section { max-width:900px; margin:2rem auto; padding:0 1rem; }
   font-size:1.2rem;
   cursor:pointer;
   box-shadow:0 6px 15px rgba(0,0,0,0.1);
-  display:flex; align-items:center;
-  gap:0.5rem;
+  display:flex; align-items:center; gap:0.5rem;
 }
 .accordion-content {
-  max-height:0;
-  overflow:hidden;
   background: rgba(255,255,255,0.2);
   backdrop-filter: blur(12px);
   border-radius:0 0 1rem 1rem;
   margin-top:0.5rem;
-  padding:0 2rem;
-  opacity:0;
-  transition:max-height 0.5s ease, opacity 0.4s ease;
+  padding:1rem 2rem;
 }
-.accordion-content.show { opacity:1; }
-
 .skills-container { display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem; }
 .skill-card {
   flex:1 1 calc(50% - 1rem);
@@ -72,27 +60,18 @@ section { max-width:900px; margin:2rem auto; padding:0 1rem; }
   backdrop-filter: blur(12px);
   border-radius:1rem;
   box-shadow:0 6px 15px rgba(0,0,0,0.1);
-  display:flex;
-  flex-direction:column;
-  transition: transform 0.3s, box-shadow 0.3s;
   position:relative;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 .skill-card:hover { transform:translateY(-2px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
 .skill-header { padding:1rem; font-weight:600; color:#0078d7; display:flex; align-items:center; gap:0.5rem; }
 .skill-details {
-  max-height:0;
-  overflow:hidden;
-  padding:0 1rem 1rem 1rem;
+  max-height:0; overflow:hidden;
   opacity:0;
   transition:max-height 0.5s ease, opacity 0.4s ease;
-  position:absolute;
-  top:100%; left:0;
-  width:100%;
-  background: rgba(255,255,255,0.95);
-  border-radius:0 0 1rem 1rem;
-  z-index:10;
+  padding:0 1rem 1rem 1rem;
 }
-.skill-card:hover .skill-details { max-height:500px; opacity:1; }
+.skill-card:hover .skill-details { max-height:1000px; opacity:1; }
 
 ul { list-style:none; padding:0; margin:0; }
 ul li { margin-bottom:0.5rem; padding-left:1.5rem; position:relative; }
@@ -115,7 +94,6 @@ footer { text-align:center; padding:1.5rem; margin-top:2rem; color:#555; font-si
 @media(max-width:600px){
   header h1{font-size:1.8rem;}
   .accordion-header{font-size:1rem; padding:1rem 1.5rem;}
-  .accordion-content{padding:0 1.5rem;}
   .skill-card{flex:1 1 100%;}
 }
 </style>
@@ -135,44 +113,46 @@ footer { text-align:center; padding:1.5rem; margin-top:2rem; color:#555; font-si
 <section>
 
 <div class="accordion-main">
-  <div class="accordion-header"><i class="fas fa-user"></i> À propos de moi</div>
-  <div class="accordion-content show">
-    <p>Professionnel IT Support spécialisé dans les <strong>systèmes et réseaux</strong> (Windows, iOS, serveurs), sécurité et téléphonie.</p>
-    <p>Je propose assistance, formation et accompagnement des utilisateurs pour garantir des systèmes performants, sécurisés et fiables.</p>
-  </div>
+  <div class="accordion-header"><i class="fas fa-user"></i> <span id="aboutHeader">À propos de moi</span></div>
+  <div class="accordion-content"><p id="aboutContent">Professionnel IT Support spécialisé dans les <strong>systèmes et réseaux</strong> (Windows, iOS, serveurs), sécurité et téléphonie.
+Je propose assistance, formation et accompagnement des utilisateurs pour garantir des systèmes performants, sécurisés et fiables.</p></div>
 </div>
 
 <h2 style="margin-top:2rem; color:#0078d7;">Compétences</h2>
 <div class="skills-container">
-<div class="skill-card">
-  <div class="skill-header"><i class="fas fa-screwdriver-wrench"></i> Maintenance et optimisation</div>
-  <div class="skill-details">
-    <ul>
-      <li>Maintenance et optimisation des PC, serveurs et imprimantes</li>
-      <li>Diagnostic complet et mise à niveau de votre parc informatique</li>
-      <li>Support à distance pour une assistance rapide sans interruption</li>
-    </ul>
+  <div class="skill-card">
+    <div class="skill-header"><i class="fas fa-screwdriver-wrench"></i> <span class="skillTitle">Maintenance et optimisation</span></div>
+    <div class="skill-details"><ul><li>Maintenance et optimisation des PC, serveurs et imprimantes</li><li>Diagnostic complet et mise à niveau de votre parc informatique</li><li>Support à distance pour une assistance rapide sans interruption</li></ul></div>
   </div>
-</div>
-<div class="skill-card">
-  <div class="skill-header"><i class="fas fa-shield-halved"></i> Réseaux et sécurité</div>
-  <div class="skill-details">
-    <ul>
-      <li>Installation, gestion et sécurisation des réseaux d’entreprise</li>
-      <li>Mise en place de nouveaux réseaux LAN selon les normes</li>
-      <li>Configuration LAN, VPN et Wi-Fi</li>
-      <li>Monitoring et supervision réseau</li>
-      <li>Sécurité, sauvegarde et récupération de données</li>
-    </ul>
+  <div class="skill-card">
+    <div class="skill-header"><i class="fas fa-shield-halved"></i> <span class="skillTitle">Réseaux et sécurité</span></div>
+    <div class="skill-details"><ul><li>Installation, gestion et sécurisation des réseaux d’entreprise</li><li>Mise en place de nouveaux réseaux LAN selon les normes</li><li>Configuration LAN, VPN et Wi-Fi</li><li>Monitoring et supervision réseau</li><li>Sécurité, sauvegarde et récupération de données</li></ul></div>
   </div>
-</div>
-<!-- Les 5 autres compétences à ajouter de la même manière -->
+  <div class="skill-card">
+    <div class="skill-header"><i class="fas fa-lightbulb"></i> <span class="skillTitle">Conseil stratégique IT</span></div>
+    <div class="skill-details"><ul><li>Choix de logiciels adaptés</li><li>Amélioration des performances</li><li>Réduction des coûts informatiques</li><li>Accompagnement personnalisé pour garantir la continuité et l’efficacité des systèmes</li></ul></div>
+  </div>
+  <div class="skill-card">
+    <div class="skill-header"><i class="fas fa-desktop"></i> <span class="skillTitle">Support technique systèmes</span></div>
+    <div class="skill-details"><ul><li>Windows, iOS et serveurs</li><li>Diagnostic et résolution de problèmes matériels et logiciels</li><li>Accompagnement et formation des utilisateurs</li></ul></div>
+  </div>
+  <div class="skill-card">
+    <div class="skill-header"><i class="fas fa-phone"></i> <span class="skillTitle">Gestion de la téléphonie</span></div>
+    <div class="skill-details"><ul><li>Support du standard téléphonique</li><li>Configuration et maintenance VoIP</li></ul></div>
+  </div>
+  <div class="skill-card">
+    <div class="skill-header"><i class="fas fa-print"></i> <span class="skillTitle">Installation et suivi des périphériques</span></div>
+    <div class="skill-details"><ul><li>Configuration de postes et serveurs</li><li>Installation et suivi des périphériques (imprimantes, scanners, routeurs)</li></ul></div>
+  </div>
+  <div class="skill-card">
+    <div class="skill-header"><i class="fas fa-globe"></i> <span class="skillTitle">Création de sites web et référencement</span></div>
+    <div class="skill-details"><ul><li>Création de sites web statiques élégants et fonctionnels pour commerçants et petites entreprises</li><li>Optimisation SEO de base : titres, descriptions, mots-clés et structure H1/H2</li><li>Référencement local : Google Maps et Google My Business</li><li>Formation rapide pour la gestion autonome du site par le client</li></ul></div>
+  </div>
 </div>
 
 <div class="accordion-main" style="margin-top:2rem;">
-  <div class="accordion-header"><i class="fas fa-envelope"></i> Contact</div>
-  <div class="accordion-content show">
-    <p>N’hésitez pas à me contacter pour un <strong>diagnostic gratuit</strong> ou un <strong>devis personnalisé</strong>.</p>
+  <div class="accordion-header"><i class="fas fa-envelope"></i> <span id="contactHeader">Contact</span></div>
+  <div class="accordion-content"><p id="contactContent">N’hésitez pas à me contacter pour un <strong>diagnostic gratuit</strong> ou un <strong>devis personnalisé</strong>.</p>
     <div class="contact-card"><i class="fas fa-envelope"></i><a href="mailto:zidatekitpro@gmail.com">zidatekitpro@gmail.com</a></div>
     <div class="contact-card"><i class="fas fa-phone"></i><a href="tel:+212615362721">0615362721</a></div>
     <div class="contact-card"><i class="fab fa-whatsapp"></i><a href="https://wa.me/212615362721" target="_blank">WhatsApp</a></div>
@@ -184,18 +164,71 @@ footer { text-align:center; padding:1.5rem; margin-top:2rem; color:#555; font-si
 <footer>&copy; 2025 Abdelkebir Zidane – IT Support Consultant</footer>
 
 <script>
-// Traduction FR / EN / AR
 const translations = {
-  fr:{about:"À propos de moi",skills:["Maintenance et optimisation","Réseaux et sécurité"],contact:"Contact"},
-  en:{about:"About Me",skills:["Maintenance and Optimization","Network and Security"],contact:"Contact"},
-  ar:{about:"عنّي",skills:["الصيانة والتحسين","الشبكات والأمان"],contact:"اتصل بي"}
+  fr:{
+    aboutHeader:"À propos de moi",
+    aboutContent:`Professionnel IT Support spécialisé dans les <strong>systèmes et réseaux</strong> (Windows, iOS, serveurs), sécurité et téléphonie.
+Je propose assistance, formation et accompagnement des utilisateurs pour garantir des systèmes performants, sécurisés et fiables.`,
+    skillTitles:["Maintenance et optimisation","Réseaux et sécurité","Conseil stratégique IT","Support technique systèmes","Gestion de la téléphonie","Installation et suivi des périphériques","Création de sites web et référencement"],
+    skillDetails:[
+      `<ul><li>Maintenance et optimisation des PC, serveurs et imprimantes</li><li>Diagnostic complet et mise à niveau de votre parc informatique</li><li>Support à distance pour une assistance rapide sans interruption</li></ul>`,
+      `<ul><li>Installation, gestion et sécurisation des réseaux d’entreprise</li><li>Mise en place de nouveaux réseaux LAN selon les normes</li><li>Configuration LAN, VPN et Wi-Fi</li><li>Monitoring et supervision réseau</li><li>Sécurité, sauvegarde et récupération de données</li></ul>`,
+      `<ul><li>Choix de logiciels adaptés</li><li>Amélioration des performances</li><li>Réduction des coûts informatiques</li><li>Accompagnement personnalisé pour garantir la continuité et l’efficacité des systèmes</li></ul>`,
+      `<ul><li>Windows, iOS et serveurs</li><li>Diagnostic et résolution de problèmes matériels et logiciels</li><li>Accompagnement et formation des utilisateurs</li></ul>`,
+      `<ul><li>Support du standard téléphonique</li><li>Configuration et maintenance VoIP</li></ul>`,
+      `<ul><li>Configuration de postes et serveurs</li><li>Installation et suivi des périphériques (imprimantes, scanners, routeurs)</li></ul>`,
+      `<ul><li>Création de sites web statiques élégants et fonctionnels pour commerçants et petites entreprises</li><li>Optimisation SEO de base : titres, descriptions, mots-clés et structure H1/H2</li><li>Référencement local : Google Maps et Google My Business</li><li>Formation rapide pour la gestion autonome du site par le client</li></ul>`
+    ],
+    contactHeader:"Contact",
+    contactContent:`N’hésitez pas à me contacter pour un <strong>diagnostic gratuit</strong> ou un <strong>devis personnalisé</strong>.`
+  },
+  en:{
+    aboutHeader:"About Me",
+    aboutContent:`IT Support professional specialized in <strong>systems and networks</strong> (Windows, iOS, servers), security and telephony.
+I provide assistance, training and user support to ensure efficient, secure, and reliable systems.`,
+    skillTitles:["Maintenance and Optimization","Network and Security","IT Strategic Consulting","System Technical Support","Telephony Management","Peripheral Setup and Monitoring","Website Creation and SEO"],
+    skillDetails:[
+      `<ul><li>Maintenance and optimization of PCs, servers, and printers</li><li>Full diagnostics and upgrades of your IT infrastructure</li><li>Remote support for fast assistance without interruption</li></ul>`,
+      `<ul><li>Installation, management and security of company networks</li><li>Setup of new LAN networks according to standards</li><li>LAN, VPN and Wi-Fi configuration</li><li>Network monitoring and supervision</li><li>Data security, backup and recovery</li></ul>`,
+      `<ul><li>Selection of suitable software</li><li>Performance improvement</li><li>IT cost reduction</li><li>Personalized guidance to ensure continuity and system efficiency</li></ul>`,
+      `<ul><li>Windows, iOS and servers</li><li>Hardware and software issue diagnosis and resolution</li><li>User support and training</li></ul>`,
+      `<ul><li>Telephone system support</li><li>VoIP configuration and maintenance</li></ul>`,
+      `<ul><li>Workstation and server setup</li><li>Installation and monitoring of peripherals (printers, scanners, routers)</li></ul>`,
+      `<ul><li>Elegant and functional static website creation for merchants and small businesses</li><li>Basic SEO optimization: titles, descriptions, keywords, H1/H2 structure</li><li>Local SEO: Google Maps and Google My Business</li><li>Quick training for client to manage site independently</li></ul>`
+    ],
+    contactHeader:"Contact",
+    contactContent:`Feel free to contact me for a <strong>free diagnosis</strong> or a <strong>personalized quote</strong>.`
+  },
+  ar:{
+    aboutHeader:"عنّي",
+    aboutContent:`متخصص في دعم تكنولوجيا المعلومات <strong>الأنظمة والشبكات</strong> (ويندوز، iOS، الخوادم)، الأمن والهاتفية.
+أقدم المساعدة والتدريب ومرافقة المستخدمين لضمان أنظمة فعالة وآمنة وموثوقة.`,
+    skillTitles:["الصيانة والتحسين","الشبكات والأمان","الاستشارات الاستراتيجية لتكنولوجيا المعلومات","الدعم الفني للأنظمة","إدارة الهاتفية","إعداد ومتابعة الأجهزة الطرفية","إنشاء المواقع الإلكترونية وتحسين محركات البحث"],
+    skillDetails:[
+      `<ul><li>صيانة وتحسين الحواسيب والخوادم والطابعات</li><li>التشخيص الكامل وترقية البنية التحتية لتكنولوجيا المعلومات الخاصة بك</li><li>الدعم عن بعد للحصول على مساعدة سريعة دون توقف</li></ul>`,
+      `<ul><li>تركيب، إدارة وتأمين شبكات الشركة</li><li>إعداد شبكات LAN جديدة وفق المعايير</li><li>تكوين LAN وVPN وWi-Fi</li><li>مراقبة وإشراف الشبكة</li><li>الأمن، النسخ الاحتياطي واستعادة البيانات</li></ul>`,
+      `<ul><li>اختيار البرامج المناسبة</li><li>تحسين الأداء</li><li>خفض تكاليف تكنولوجيا المعلومات</li><li>إرشاد شخصي لضمان استمرارية وكفاءة الأنظمة</li></ul>`,
+      `<ul><li>Windows وiOS والخوادم</li><li>تشخيص وحل مشاكل الأجهزة والبرامج</li><li>دعم وتدريب المستخدمين</li></ul>`,
+      `<ul><li>دعم نظام الهاتف</li><li>تكوين وصيانة VoIP</li></ul>`,
+      `<ul><li>تكوين محطات العمل والخوادم</li><li>تركيب ومتابعة الأجهزة الطرفية (الطابعات، الماسحات، الموجهات)</li></ul>`,
+      `<ul><li>إنشاء مواقع إلكترونية ثابتة وأنيقة وعملية للتجار والشركات الصغيرة</li><li>تحسين SEO الأساسي: العناوين، الوصف، الكلمات المفتاحية، بنية H1/H2</li><li>SEO محلي: خرائط جوجل وGoogle My Business</li><li>تدريب سريع لإدارة الموقع بشكل مستقل من قبل العميل</li></ul>`
+    ],
+    contactHeader:"اتصل بي",
+    contactContent:`لا تتردد في الاتصال بي للحصول على <strong>تشخيص مجاني</strong> أو <strong>عرض سعر مخصص</strong>.`
+  }
 };
-document.getElementById('languageSwitcher').addEventListener('change', e=>{
-  const lang=e.target.value;
-  document.querySelector('.accordion-main .accordion-header').innerHTML='<i class="fas fa-user"></i> '+translations[lang].about;
-  document.querySelector('h2').textContent = lang==='ar'?'المهارات':'Compétences';
-  document.querySelectorAll('.skill-card').forEach((card,i)=>{ card.querySelector('.skill-header').innerHTML='<i class="'+card.querySelector('.skill-header i').className+'"></i> '+translations[lang].skills[i]; });
-  document.querySelectorAll('.accordion-main')[1].querySelector('.accordion-header').innerHTML='<i class="fas fa-envelope"></i> '+translations[lang].contact;
+
+const languageSwitcher = document.getElementById('languageSwitcher');
+languageSwitcher.addEventListener('change', (e)=>{
+  const lang = e.target.value;
+  document.getElementById('aboutHeader').innerHTML = translations[lang].aboutHeader;
+  document.getElementById('aboutContent').innerHTML = translations[lang].aboutContent;
+  document.getElementById('contactHeader').innerHTML = translations[lang].contactHeader;
+  document.getElementById('contactContent').innerHTML = translations[lang].contactContent;
+  document.querySelectorAll('.skill-card').forEach((card,i)=>{
+    card.querySelector('.skillTitle').innerHTML = translations[lang].skillTitles[i];
+    card.querySelector('.skill-details').innerHTML = translations[lang].skillDetails[i];
+  });
 });
 </script>
 
